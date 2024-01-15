@@ -1,0 +1,462 @@
+/*#region STARTER CSS*/
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Mostly equivalates to 10px but allows users accessibility zoom settings to work*/
+  /* font-size: 10px; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*   color-scheme: dark light; */
+  min-height: 100vh;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* LAYOUT DEBUG */
+/* { */
+/*       outline: 3px solid orange; */
+/*       background-color: hsla(120, 50%, 50%, 0.18); */
+/* } */
+
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Try to keep your margins going in one direction to avoid margin collapase or grounding. I switch all the top margins off to avoid this issue. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+blockquote,
+address,
+article,
+aside,
+details,
+dialogue,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+pre,
+section,
+table,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-block-start: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  /* You MUST make sure that links stand out from nomal text though...*/
+}
+
+/*
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+  */
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  /* This means that it can be less than 100% of the width of its parent IF the image is INTRINSICALLY smaller */
+  max-width: 100%;
+
+  height: auto;
+  /* 'auto' is the initial value for height BUT for images (and other elements which have an intrinic height) that is not the case. To make an image responsive you set one dimension (usually width) to [max-]width: 100%; and the other to 'auto' to ensure it keeps aspect ratio. 'auto' basically tells the browser to decide. */
+}
+
+/* Because we us <ul>s for lists that we don't always want bulletted. */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* To make actual bulletted lists */
+ul.typographic {
+  list-style: initial;
+  padding-inline-start: 20px;
+}
+
+/* stops icons being the target of JS click events */
+.btn *,
+button * {
+  pointer-events: null;
+  user-select: none;
+}
+
+/* inherits the font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*****************************
+* ACCESSIBILITY
+******************************/
+/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
+
+.visually-hidden,
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: auto;
+  -webkit-clip-path: auto;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/*#endregion RegionName*/
+
+body {
+  width: 90vw;
+  margin: auto;
+  font-family: Lexend, sans-serif;
+  background-color: rgb(211, 230, 255);
+}
+
+main {
+  width: 90vw;
+  margin: auto;
+  max-width: 1000px;
+}
+
+header {
+  padding: 20px;
+  font-size: 3rem;
+  font-weight: 800;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.searchTools label {
+  padding: 10px;
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.searchTools > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.searchTools button {
+  background-color: rgb(78, 111, 184);
+  color: white;
+}
+input {
+  border-style: solid;
+  border-width: 1px;
+  height: 40px;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+
+input:focus-visible {
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 1px;
+}
+
+button {
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(78, 111, 184);
+  font-weight: 500;
+  border-style: solid;
+  border-color: rgb(78, 111, 184);
+  border-radius: 4px;
+}
+
+button:hover,
+button:focus-within {
+  border-color: black;
+  border-width: 1.5px;
+}
+
+div img {
+  margin: auto;
+}
+.currentWeatherContainer {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.currentWeatherContainer > div {
+  padding-bottom: 10px;
+}
+
+.currentWeather {
+  max-width: 700px;
+  height: 180px;
+  border-radius: 10px;
+  min-width: 600px;
+  background-color: rgb(78, 111, 184);
+  color: white;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  margin: 8px;
+  padding-bottom: 5px;
+}
+
+h5 {
+  font-size: 1.6rem;
+}
+
+.currentWeatherData > div {
+  display: flex;
+  text-align: center;
+}
+
+.currentWeatherData div > span {
+  width: 108px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span img {
+  height: 75px;
+}
+
+li {
+  list-style: none;
+  padding: 10px;
+  height: 44px;
+}
+
+.forecastContainer {
+  width: 90vw;
+  min-width: 688px;
+}
+
+.forecastCategories {
+  min-width: 210px;
+}
+
+.forecastCategories li {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.forecast {
+  margin: auto;
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+  min-width: 600px;
+  max-width: 1000px;
+  height: 508px;
+  background-color: rgb(78, 111, 184);
+  color: white;
+}
+
+.dataTable {
+  display: flex;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+.tableCol:nth-child(odd) {
+  background-color: rgba(94, 118, 168, 0.507);
+}
+
+.tableCol:nth-child(even) {
+  background-color: rgba(78, 112, 184, 0.531);
+}
+
+.tableCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 83px;
+}
+
+.tableCol li:nth-last-child(2) {
+  height: 50px;
+  padding-top: 0px;
+}
+
+li img {
+  width: 65px;
+}
+
+.svgContainer {
+  width: 24px;
+}
+
+.additionalData {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  min-width: 600px;
+  max-width: 1000px;
+  height: 200px;
+}
+
+.additionalData > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  background-color: rgb(78, 111, 184);
+  border-radius: 10px;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.additionalData > div:first-child {
+  margin-right: 10px;
+  width: 30vw;
+  max-width: 305px;
+  min-width: 243px;
+}
+
+.additionalData > div:last-child {
+  margin-left: 10px;
+  width: 50vw;
+  min-width: 445px;
+}
+
+tbody tr {
+  padding-bottom: 5px;
+}
+
+.tideDataTable {
+  text-transform: capitalize;
+  margin: 20px;
+}
+
+.tideDataTable span {
+  display: block;
+  width: 45px;
+}
+
+.todayTideData div,
+.tomorrowTideData div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.todayTideData div:nth-child(1),
+.tomorrowTideData div:nth-child(1) {
+  order: 1;
+}
+.todayTideData div:nth-child(2),
+.tomorrowTideData div:nth-child(2) {
+  order: 3;
+}
+.todayTideData div:nth-child(3),
+.tomorrowTideData div:nth-child(3) {
+  order: 2;
+}
+.todayTideData div:nth-child(4),
+.tomorrowTideData div:nth-child(4) {
+  order: 4;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.toggleDisplay {
+  display: none;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #000000;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800&family=Red+Hat+Display:wght@300;400;500&family=Yantramanav:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module" src="./entry.js"></script>
+    <title>Surf Forecast</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Surf It</h1>
+    </header>
+
+    <main>
+      <div class="searchTools">
+        <div>
+          <label for="locationInput">Where To?</label>
+          <div>
+            <input type="text" name="locationInput" id="locationInput" />
+            <button type="button" id="searchButton">Search</button>
+          </div>
+        </div>
+      </div>
+      <div id="placeholder">
+        <img src="./images/surferImage1.png" alt="Image of surfer" />
+      </div>
+      <div class="currentWeatherContainer">
+        <div class="headings displayNone">
+          <h3>Current Conditions</h3>
+        </div>
+
+        <div id="currentDataTable" class="currentWeather displayNone"></div>
+      </div>
+
+      <div id="forecastContainer" class="displayNone">
+        <div class="headings displayNone"><h3>Forecast Conditions</h3></div>
+        <div class="forecast">
+          <div id="forecastCategories" class="forecastCategories">
+            <li></li>
+            <li></li>
+
+            <li>Air Temperature &deg;C</li>
+            <li>Wave Height</li>
+            <li>Wave Direction</li>
+            <li>Wave Period</li>
+            <li>Water Temperature &deg;C</li>
+            <li>Wind Speed</li>
+            <li>Wind Direction</li>
+            <li>Weather Conditions</li>
+          </div>
+          <div id="forecastDataTable" class="dataTable"></div>
+        </div>
+        <div id="addtitionalData" class="additionalData">
+          <div>
+            <div class="headings displayNone"><h3>Tide</h3></div>
+
+            <div>
+              <button type="button" id="todayButton">Today</button>
+              <button type="button" id="tomorrowButton">Tomorrow</button>
+            </div>
+
+            <div id="tideData" class="tideDataTable">
+              <div id="todayTideData" class="todayTideData displayNone"></div>
+              <div
+                id="tomorrowTideData"
+                class="tomorrowTideData displayNone"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div class="headings displayNone"><h3>Sunrise/sunset</h3></div>
+
+            <div id="sunriseData"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <footer><small>Surf It &copy; 2024</small></footer>
+</html>
