@@ -11,6 +11,7 @@ export {
   updateTideState,
   updateSunriseTimes,
   onSearch,
+  errorFunction,
 };
 
 import * as variable from "./consts.js";
@@ -252,5 +253,14 @@ function tideDisplayControls() {
 
   variable.tomorrowButton.addEventListener("click", () => {
     toggleDisplay(variable.todayTideRef, variable.tomorrowTideRef);
+  });
+}
+
+// ! ACTIVATED IN CATCH BLOCK AND REMOVES ALL HTML THAT HAD BEEN CREATED TO POTENTIALLY DISPLAY DATA
+function errorFunction() {
+  variable.currentDataTableRef.classList.add("displayNone");
+  variable.forecastContainer.classList.add("displayNone");
+  variable.headingsRef.forEach((headings) => {
+    headings.classList.add("displayNone");
   });
 }

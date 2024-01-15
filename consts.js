@@ -1,3 +1,4 @@
+// DOM references
 export const forecastContainer = document.getElementById("forecastContainer");
 export const locationInput = document.getElementById("locationInput");
 export const searchButton = document.getElementById("searchButton");
@@ -15,3 +16,4 @@ export const tomorrowTideRef = document.getElementById("tomorrowTideData");
 export const rootRef = document.getElementById("root");
 export const headingsRef = document.querySelectorAll(".headings");
 export const sunriseDataRef = document.getElementById("sunriseData");
+export const errorRef = document.getElementById("errorMessage");

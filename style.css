@@ -167,7 +167,10 @@ select {
 /*#endregion RegionName*/
 
 body {
+  display: flex;
+  flex-direction: column;
   width: 90vw;
+  min-height: 100vh;
   margin: auto;
   font-family: Lexend, sans-serif;
   background-color: rgb(211, 230, 255);
@@ -184,7 +187,6 @@ header {
   font-size: 3rem;
   font-weight: 800;
   max-width: 1000px;
-  margin: auto;
 }
 
 .searchTools label {
@@ -426,7 +428,8 @@ tbody tr {
 
 footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: auto;
+  bottom: 0;
 }
 
 .displayNone {
@@ -442,7 +445,7 @@ footer {
   height: 48px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 3px solid #000000;
+  border-top: 3px solid rgb(255, 255, 255);
   border-right: 3px solid transparent;
   box-sizing: border-box;
   position: absolute;
@@ -459,4 +462,8 @@ footer {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.errorMessage {
+  text-align: center;
 }
