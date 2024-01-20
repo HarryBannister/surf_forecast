@@ -186,7 +186,18 @@ header {
   padding: 20px;
   font-size: 3rem;
   font-weight: 800;
-  max-width: 1000px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  min-width: 555px;
+}
+
+header div {
+  display: flex;
+}
+
+header a {
+  margin: 10px;
 }
 
 .searchTools label {
@@ -466,4 +477,16 @@ footer {
 
 .errorMessage {
   text-align: center;
+}
+
+form input {
+  margin-right: 0px;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  max-width: 1000px;
 }
