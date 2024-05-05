@@ -43,15 +43,28 @@ function onSearch() {
 // ! MAPS OVER CURRENT WEATHER AND MARINE CONDITIONS AND CREATES HTML
 function updateCurrentConditions() {
   const temp = Math.round(currentWeather.main.temp);
-  const waveHeight = currentSurf.waveHeight.meteo;
+
+  // ? Data from API no longer available so mock data used instead
+  // const waveHeight = currentSurf.waveHeight.meteo;
+  // const waveDirection = `<div
+  //     class="svgContainer"
+  //     style="transform: rotate(${currentSurf.waveDirection.meteo}deg)"
+  //   >
+  //     ${arrow}
+  //   </div>`;
+  // const wavePeriod = Math.round(currentSurf.wavePeriod.noaa);
+  // const waterTemp = Math.round(currentSurf.waterTemperature.sg);
+
+  // ? mock data
+  const waveHeight = 1.2;
   const waveDirection = `<div
-      class="svgContainer"
-      style="transform: rotate(${currentSurf.waveDirection.meteo}deg)"
-    >
-      ${arrow}
-    </div>`;
-  const wavePeriod = Math.round(currentSurf.wavePeriod.noaa);
-  const waterTemp = Math.round(currentSurf.waterTemperature.sg);
+                  class="svgContainer"
+                  style="transform: rotate(90deg)">
+                  ${arrow}
+                  </div>`;
+  const wavePeriod = 4;
+  const waterTemp = 15;
+
   const windSpeed = Math.round(currentWeather.wind.speed);
   const windDir = `<div class="svgContainer"style="transform: rotate(${currentWeather.wind.deg}deg)">${arrow}</div>`;
   const conditions = currentWeather.weather[0].icon;
@@ -84,15 +97,28 @@ function updateCurrentConditions() {
 function updateForecastConditions() {
   const forecastHTML = forecastData.map((item) => {
     const temp = Math.round(item.main.temp);
-    const waveHeight = item.surfData.hours[0].waveHeight.meteo;
+
+    // ? Data from API no longer available so mock data used instead
+    // const waveHeight = item.surfData.hours[0].waveHeight.meteo;
+    // const waveDirection = `<div
+    //   class="svgContainer"
+    //   style="transform: rotate(${item.surfData.hours[0].waveDirection.meteo}deg)"
+    // >
+    //   ${arrow}
+    // </div>`;
+    // const wavePeriod = Math.round(item.surfData.hours[0].wavePeriod.noaa);
+    // const waterTemp = Math.round(item.surfData.hours[0].waterTemperature.sg);
+
+    // ? mock data
+    const waveHeight = 1.2;
     const waveDirection = `<div
-      class="svgContainer"
-      style="transform: rotate(${item.surfData.hours[0].waveDirection.meteo}deg)"
-    >
-      ${arrow}
-    </div>`;
-    const wavePeriod = Math.round(item.surfData.hours[0].wavePeriod.noaa);
-    const waterTemp = Math.round(item.surfData.hours[0].waterTemperature.sg);
+                  class="svgContainer"
+                  style="transform: rotate(90deg)">
+                  ${arrow}
+                  </div>`;
+    const wavePeriod = 4;
+    const waterTemp = 15;
+
     const windSpeed = Math.round(item.wind.speed);
     const windDir = `<div class="svgContainer"style="transform: rotate(${item.wind.deg}deg)">${arrow}</div>`;
     const conditions = item.weather[0].icon;
@@ -120,7 +146,15 @@ function updateForecastConditions() {
 
 // ! MAPS OVER TIDE CONDITIONS AND CREATES HTML
 function updateTideState() {
-  const returnTodayTideTimes = todayTideArray
+  // ? Mock array representing the high and low tide times
+  const mockTodayTideArray = [
+    { type: "High", time: "2024-01-11T01:29:00+00:00" },
+    { type: "Low", time: "2024-01-11T01:29:00+00:00" },
+    { type: "High", time: "2024-01-11T01:29:00+00:00" },
+    { type: "Low", time: "2024-01-11T01:29:00+00:00" },
+  ];
+
+  const returnTodayTideTimes = mockTodayTideArray
     .map((item) => {
       return `<div>
               <span>${item.type}</span>
@@ -132,7 +166,15 @@ function updateTideState() {
 
   variable.todayTideRef.innerHTML = todayTideDataHTML;
 
-  const returnTomorrowTideTimes = tommorrowTideArray
+  // ? Mock array representing the high and low tide times
+  const mockTomorrowTideArray = [
+    { type: "High", time: "2024-01-11T01:29:00+00:00" },
+    { type: "Low", time: "2024-01-11T01:29:00+00:00" },
+    { type: "High", time: "2024-01-11T01:29:00+00:00" },
+    { type: "Low", time: "2024-01-11T01:29:00+00:00" },
+  ];
+
+  const returnTomorrowTideTimes = mockTomorrowTideArray
     .map((item) => {
       return `
             <div>

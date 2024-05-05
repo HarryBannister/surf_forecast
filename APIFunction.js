@@ -65,19 +65,20 @@ async function getForecastWeatherData() {
     );
     currentWeather = currentWeatherData.data;
 
+    // ? API calls disabled due to high cost of marine API - replaced with mock data for demo purposes
     // * CURRENT SURF DATA API
-    // as above and uses date/time from above API to return data from marine API for that point in time
-    const marineAPIparams =
-      "waveDirection,wavePeriod,waterTemperature,waveHeight";
-    const currentSurfData = await axios.get(
-      `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lon}&params=${marineAPIparams}&start=${currentWeather.dt}&end=${currentWeather.dt}`,
-      {
-        headers: {
-          Authorization: `${marineAPIKey}`,
-        },
-      }
-    );
-    currentSurf = currentSurfData.data.hours[0];
+    // * as above and uses date/time from above API to return data from marine API for that point in time
+    // const marineAPIparams =
+    //   "waveDirection,wavePeriod,waterTemperature,waveHeight";
+    // const currentSurfData = await axios.get(
+    //   `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lon}&params=${marineAPIparams}&start=${currentWeather.dt}&end=${currentWeather.dt}`,
+    //   {
+    //     headers: {
+    //       Authorization: `${marineAPIKey}`,
+    //     },
+    //   }
+    // );
+    // currentSurf = currentSurfData.data.hours[0];
 
     // * WEATHER FORECAST DATA API
     // uses location coords to get 3hrly forecast weather data from API
@@ -93,34 +94,36 @@ async function getForecastWeatherData() {
       date = getFullTimestamp(forecastData[i].dt * 1000);
       futureDate = getFullTimestamp((forecastData[i].dt + 172800) * 1000);
 
+      // ? API calls disabled due to high cost of marine API - replaced with mock data for demo purposes
       // * SURF FORECAST DATA API
-      const surfData = await axios.get(
-        `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lon}&params=${marineAPIparams}&start=${date}&end=${date}`,
-        {
-          headers: {
-            Authorization: `${marineAPIKey}`,
-          },
-        }
-      );
-      // stores marine data for in the original forecast data array
-      forecastData[i].surfData = surfData.data;
+      // const surfData = await axios.get(
+      // `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lon}&params=${marineAPIparams}&start=${date}&end=${date}`,
+      // {
+      // headers: {
+      // Authorization: `${marineAPIKey}`,
+      // },
+      // }
+      // );
+      // * stores marine data for in the original forecast data array
+      // forecastData[i].surfData = surfData.data;
     }
 
-    // uses location to get tide times and states for date ranges specified above
-    const tideData = await axios.get(
-      `https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lon}&start=${formatDate(
-        date
-      )}&end=${formatDate(futureDate)}`,
-      {
-        headers: {
-          Authorization: `${marineAPIKey}`,
-        },
-      }
-    );
-    // destructures tide data and retrieves only data needed for today and tomorrow
-    tideArray = tideData.data.data;
-    todayTideArray = tideArray.slice(0, 4);
-    tommorrowTideArray = tideArray.slice(4, 9);
+    // ? API calls disabled due to high cost of marine API - replaced with mock data for demo purposes
+    // * uses location to get tide times and states for date ranges specified above
+    // const tideData = await axios.get(
+    //   `https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lon}&start=${formatDate(
+    //     date
+    //   )}&end=${formatDate(futureDate)}`,
+    //   {
+    //     headers: {
+    //       Authorization: `${marineAPIKey}`,
+    //     },
+    //   }
+    // );
+    // * destructures tide data and retrieves only data needed for today and tomorrow
+    // tideArray = tideData.data.data;
+    // todayTideArray = tideArray.slice(0, 4);
+    // tommorrowTideArray = tideArray.slice(4, 9);
 
     // uses location to retrieve 7 day sunrise/sunset times
     const sunriseData = await axios.get(
